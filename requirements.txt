@@ -1,6 +1,10 @@
+setuptools
 pandas
 numpy
 mlflow
 logging
 python-dotenv
 pymongo
+certifi
+
+# -e .
