@@ -4,6 +4,7 @@ numpy
 mlflow
 logging
 python-dotenv
+pymongo[srv]==3.12
 pymongo
 certifi
 

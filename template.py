@@ -17,7 +17,7 @@ list_of_files =[
     'networksecurity/utils/__init__.py',
     'networksecurity/cloud/__init__.py',
     # 'networksecurity/',
-    'noteboks/',
+    # 'notebooks/',
     'Dockerfile',
     'main.py',
     'app.py',
