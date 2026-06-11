@@ -11,7 +11,7 @@ from networksecurity.logging.logger import logging
 
 load_dotenv()
 
-MONGO_DB_URI = os.getenv('MONGO_DB_URI')
+MONGO_DB_URI = os.getenv('MONGO_URI')
 ca=certifi.where()
 
 class NetworkDataExtract:
@@ -34,14 +34,21 @@ class NetworkDataExtract:
 
     def insert_data_monogodb(self,records,database,collection):
         try:
+            self.mongo_client = pymongo.MongoClient(MONGO_DB_URI)
+
+            # Test connection
+            self.mongo_client.admin.command("ping")
+            print("Connected to MongoDB successfully!")
+            print(self.mongo_client.list_database_names())
             self.database = database
             self.collection = collection
             self.records = records
-            self.mongo_client = pymongo.MongoClient(MONGO_DB_URI)
+            # self.mongo_client = pymongo.MongoClient(MONGO_DB_URI)
             self.database = self.mongo_client[self.database]
             self.collection = self.database[self.collection]
 
-            self.collection.insert_many(self.records)
+            result = self.collection.insert_many(self.records)
+            print(f"Inserted {len(result.inserted_ids)} documents")
             return len(self.records)
 
         except Exception as e:
