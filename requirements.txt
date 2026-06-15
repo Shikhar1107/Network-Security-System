@@ -11,5 +11,5 @@ scikit-learn
 dill
 scipy
 pyaml
-
+dagshub
 # -e .

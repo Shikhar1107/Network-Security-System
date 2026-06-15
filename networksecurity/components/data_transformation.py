@@ -1,8 +1,8 @@
 from networksecurity.logging.logger import logging
 from networksecurity.exception.exception import NetworkSecurityException
-from networksecurity.entity.config_entity import TrainingPipelineConfig,DataTransformationConfig
+from networksecurity.entity.config_entity import DataTransformationConfig
 from networksecurity.entity.artifact_entity import DataTransformationArtifact, DataValidationArtifact
-import os, sys
+import sys
 import pandas as pd
 import numpy as np
 from sklearn.impute import KNNImputer
@@ -66,6 +66,7 @@ class DataTransformation:
             save_numpy_array_data(self.data_transformation_config.transformed_train_file_path, array=train_arr)
             save_numpy_array_data(self.data_transformation_config.transformed_test_file_path, array=test_arr)
             save_object(self.data_transformation_config.transformed_object_file_path, preprocessor_object)
+            save_object("final_model/preprocessor.pkl",preprocessor_object)
 
             # preparing artifacts
             data_transformation_artifact = DataTransformationArtifact(
