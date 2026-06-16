@@ -191,7 +191,8 @@ class ModelTrainer:
             # loading training array and testing array
             train_arr = load_numpy_array_data(train_file_path)
             test_arr = load_numpy_array_data(test_file_path)
-
+            print("train_arr shape:", train_arr.shape)
+            print("test_arr shape:", test_arr.shape)
             x_train,y_train,x_test,y_test = (
                 train_arr[:,:-1],
                 train_arr[:, -1],

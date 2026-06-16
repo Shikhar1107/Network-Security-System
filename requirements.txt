@@ -12,4 +12,7 @@ dill
 scipy
 pyaml
 dagshub
+fastapi
+uvicorn
+python-multipart
 # -e .

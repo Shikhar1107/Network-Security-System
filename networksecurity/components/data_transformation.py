@@ -27,7 +27,7 @@ class DataTransformation:
         except Exception as e:
             raise NetworkSecurityException(e,sys)
         
-    def get_data_transformer_object(cls)-> Pipeline:
+    def get_data_transformer_object(self)-> Pipeline:
         logging.info("Entered get_transformer_object method of transformation class")
         try:
             imputer: KNNImputer = KNNImputer(**DATA_TRANSFORMATION_IMPUTER_PARAMS)
@@ -59,8 +59,8 @@ class DataTransformation:
             transformed_input_train_feature = preprocessor_object.transform(input_feature_train_df)
             transformed_input_test_feature = preprocessor_object.transform(input_feature_test_df)
             # combine columns and target columns
-            train_arr = np.c_[target_feature_train_df,np.array(target_feature_train_df)]
-            test_arr = np.c_[target_feature_test_df,np.array(target_feature_test_df)]
+            train_arr = np.c_[transformed_input_train_feature,np.array(target_feature_train_df)]
+            test_arr = np.c_[transformed_input_test_feature,np.array(target_feature_test_df)]
 
             # save numpy array data
             save_numpy_array_data(self.data_transformation_config.transformed_train_file_path, array=train_arr)
