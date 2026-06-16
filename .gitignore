@@ -5,3 +5,4 @@ __pycache__
 logs
 final_model/*.pkl
 *.pkl
+Artifacts/
