@@ -3,3 +3,5 @@
 .pyc
 __pycache__
 logs
+final_model/*.pkl
+*.pkl
